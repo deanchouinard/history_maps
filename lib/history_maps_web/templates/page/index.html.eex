@@ -1,0 +1,6 @@
+<%= if @current_user do %>
+
+  <h4>Show the user's maps</h4>
+<% else %>
+  <h4>User not logged in≈</h4>
+<% end %>
