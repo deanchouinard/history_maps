@@ -1,6 +1,21 @@
 <%= if @current_user do %>
 
   <h4>Show the user's maps</h4>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for map <- @maps do %>
+          <td><%= link map.title, to: map_path(@conn, :show, map) %></td>
+          <td><%= map.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <h4>User not logged in≈</h4>
 <% end %>

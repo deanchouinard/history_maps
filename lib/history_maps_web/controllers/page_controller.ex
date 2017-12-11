@@ -2,6 +2,12 @@ defmodule HistoryMapsWeb.PageController do
   use HistoryMapsWeb, :controller
 
   def index(conn, _params) do
-    render conn, "index.html"
+    maps = if conn.assigns.current_user do
+      HistoryMaps.Maps.list_maps(conn.assigns.current_user)
+    else
+      []
+    end
+
+    render conn, "index.html", maps: maps
   end
 end
