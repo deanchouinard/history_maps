@@ -16,6 +16,7 @@
       <% end %>
     </tbody>
   </table>
+  <span><%= link "New Map", to: map_path(@conn, :new) %></span>
 <% else %>
   <h4>User not logged in≈</h4>
 <% end %>

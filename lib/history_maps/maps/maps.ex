@@ -7,12 +7,21 @@ defmodule HistoryMaps.Maps do
     Repo.all(user_maps(user))
   end
 
-  def get_map(id) do
-    Repo.get(Map, id)
+  def get_map(id, user) do
+    Repo.get(user_maps(user), id)
+    #Repo.get(Map, id)
   end
 
-  def create_map(attrs \\ %{}) do
-    %Map{}
+  def new_map(user) do
+    user
+    |> Ecto.build_assoc(:maps)
+    |> Map.changeset()
+  end
+
+
+  def create_map(attrs \\ %{}, user) do
+    user
+    |> Ecto.build_assoc(:maps)
     |> Map.changeset(attrs)
     |> Repo.insert()
   end
