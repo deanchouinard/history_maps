@@ -17,6 +17,23 @@
     </tbody>
   </table>
   <span><%= link "New Map", to: map_path(@conn, :new) %></span>
+  <h4>Locations</h4>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for location <- @locations do %>
+          <td><%= link location.title, to: location_path(@conn, :show, location) %></td>
+          <td><%= location.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span><%= link "New Location", to: location_path(@conn, :new) %></span>
 <% else %>
   <h4>User not logged in≈</h4>
 <% end %>

@@ -1,0 +1,9 @@
+
+
+<h1>Showing Location</h1>
+
+<b><%= @location.title  %></b> (<%= @location.id %>)
+</br><%= @location.description %>
+</br>Lat: <%= @location.lat %>
+</br>Lng: <%= @location.lng %>
+

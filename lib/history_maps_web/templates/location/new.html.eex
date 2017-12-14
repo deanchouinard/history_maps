@@ -1,0 +1,30 @@
+
+
+<h1>New Location</h1>
+
+<%= form_for @changeset, location_path(@conn, :create), fn f -> %>
+
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= text_input f, :title, placeholder: "Title", class: "form-control" %>
+  <%= error_tag f, :title %>
+</div>
+<div class="form-group">
+  <%= text_input f, :description, placeholder: "Description", class: "form-control" %>
+  <%= error_tag f, :description %>
+</div>
+<div class="form-group">
+  <%= text_input f, :lat, placeholder: "Lat", class: "form-control" %>
+  <%= error_tag f, :lat %>
+</div>
+<div class="form-group">
+  <%= text_input f, :lng, placeholder: "Lng", class: "form-control" %>
+  <%= error_tag f, :lng %>
+</div>
+<%= submit "Create Location", class: "btn btn-primary" %>
+<% end %>

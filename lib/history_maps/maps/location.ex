@@ -16,7 +16,7 @@ defmodule HistoryMaps.Maps.Location do
   
   def changeset(location, params \\ %{}) do
     location
-    |> cast(params, [:user_id, :title, :lat, :lng])
+    |> cast(params, [:user_id, :title, :description, :lat, :lng])
   end
 
   
