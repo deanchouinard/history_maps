@@ -1,0 +1,10 @@
+
+
+
+<h1>Showing Marker</h1>
+
+<b><%= @marker.title  %></b> (<%= @marker.id %>)
+</br><%= @marker.description %>
+</br>Lat: <%= @marker.lat %>
+</br>Lng: <%= @marker.lng %>
+

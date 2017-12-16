@@ -20,7 +20,9 @@ defmodule HistoryMapsWeb.Router do
     get "/", PageController, :index
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
-    resources "/maps", MapController, only: [:index, :show, :new, :create]
+    resources "/maps", MapController, only: [:index, :show, :new, :create] do
+      resources "/markers", MarkerController, only: [:index, :show, :new, :create]
+    end
     resources "/locations", LocationController, only: [:index, :show, :new, :create]
   end
 

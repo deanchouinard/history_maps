@@ -11,7 +11,8 @@ defmodule HistoryMapsWeb.MapController do
 
   def show(conn, %{"id" => id}, user) do
     map = Maps.get_map(id, user)
-    render conn, "show.html", map: map
+    markers = Maps.list_markers(map)
+    render conn, "show.html", map: map, markers: markers
   end
 
   def new(conn, _params, user) do

@@ -7,6 +7,7 @@ defmodule HistoryMaps.Maps.Map do
     field :description, :string
     # has_many :products, CPAP.Product
     belongs_to :user, HistoryMaps.Accounts.User
+    has_many :markers, HistoryMaps.Maps.Marker
     
     timestamps()
   end

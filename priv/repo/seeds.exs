@@ -41,7 +41,8 @@ IO.inspect location
 Repo.delete_all Marker
 marker = %Marker{}
   |> Marker.changeset(%{user_id: user.id, map_id: map.id, 
-      location_id: location.id, title: "Test Marker"})
+      title: "Test Marker",
+      lat: 22.2345, lng: 44.4985})
   |> Repo.insert!()
 
 IO.inspect marker

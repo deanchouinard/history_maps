@@ -1,3 +1,10 @@
 
 <h1>Showing Map</h1>
 <%= render "map.html", map: @map %>
+
+<h2>Markers</h2>
+  <%= for marker <- @markers do %>
+    <%= marker.title %>
+  <% end %>
+  <span><%=  link "New Marker", to: map_marker_path(@conn, :new, @map.id) %></span>
+
