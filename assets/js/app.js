@@ -19,3 +19,11 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+let map = document.getElementById("view-button")
+if(map) {
+  map.onclick = function() {
+  window.open('/map_display.html', '_blank');
+  console.log("map view clicked"); 
+  }
+}
+

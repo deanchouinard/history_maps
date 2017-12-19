@@ -24,6 +24,8 @@ defmodule HistoryMapsWeb.Router do
       resources "/markers", MarkerController, only: [:index, :show, :new, :create]
     end
     resources "/locations", LocationController, only: [:index, :show, :new, :create]
+    get "/display", DisplayController, :show
+
   end
 
   # Other scopes may use custom stacks.

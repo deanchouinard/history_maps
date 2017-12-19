@@ -14,7 +14,7 @@ defmodule HistoryMaps.Maps.Map do
   
   def changeset(map, params \\ %{}) do
     map
-    |> cast(params, [:user_id, :title])
+    |> cast(params, [:user_id, :title, :description])
   end
 
   

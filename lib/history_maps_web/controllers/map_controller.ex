@@ -2,7 +2,7 @@ defmodule HistoryMapsWeb.MapController do
   use HistoryMapsWeb, :controller
   alias HistoryMaps.Maps
 
-  plug :authenticate_user when action in [:index, :show]
+  plug :authenticate_user when action in [:index, :show, :new, :create]
 
   # def index(conn, _params) do
   #   users = Accounts.list_users()

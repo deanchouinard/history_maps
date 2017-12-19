@@ -20,7 +20,6 @@ defmodule HistoryMapsWeb.MarkerController do
   end
 
   def create(conn, %{"marker" => marker_params, "map_id" => map_id}, user) do
-    IO.inspect marker_params, label: "marker_params"
     case Maps.create_marker(marker_params, user, map_id) do
       {:ok, marker} ->
         conn

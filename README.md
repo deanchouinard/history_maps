@@ -7,6 +7,19 @@ Local history maps and descriptons.
   * title
   * description
 
+* markers - points of interest on the map
+  * user_id
+  * map_id
+  * title
+  * description
+  * latitude
+  * longitude
+
+## API
+
+
+## Old
+
 * locations - locations of interest
   * user_id
   * x, y coordinates
@@ -16,9 +29,3 @@ Local history maps and descriptons.
 * map location relationship - locations to include in a map
 * marker - combination of map and location; can use title and description
 from the location, or customize it for a particular map
-  * user_id
-  * map_id
-  * location_id
-  * title
-  * description
-

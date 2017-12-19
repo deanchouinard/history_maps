@@ -1,6 +1,3 @@
-
-
-
 <h1>New Marker</h1>
 
 <%= form_for @changeset, map_marker_path(@conn, :create, @map_id), fn f -> %>

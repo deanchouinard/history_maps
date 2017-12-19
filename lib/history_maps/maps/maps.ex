@@ -38,7 +38,6 @@ defmodule HistoryMaps.Maps do
   end
 
   def create_marker(attrs \\ %{}, user, map_id) do
-    IO.inspect attrs, label: "attrs"
     user
     |> Ecto.build_assoc(:markers)
     |> Marker.changeset(Kernel.put_in(attrs, ["map_id"], map_id))

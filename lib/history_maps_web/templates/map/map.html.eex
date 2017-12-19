@@ -1,3 +1,4 @@
 
 <b><%= @map.title  %></b> (<%= @map.id %>)
+<br/><%= @map.description %>
 
