@@ -1,2 +1,62 @@
 <h1>Showing Display</h1>
 
+    <div id="map"></div>
+
+    <script>
+      var customLabel = {
+        restaurant: {
+          label: 'R'
+        },
+        bar: {
+          label: 'B'
+        }
+      };
+
+        function initMap() {
+          console.log("initMap");
+          var jmarkers = <%= IO.inspect raw(j_decode(@markers)) %>;
+          console.log("jmarkers:" + jmarkers);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: new google.maps.LatLng(<%= @map.lat %>, <%= @map.lng %>),
+          zoom: <%= @map.zoom %>
+        });
+        var infoWindow = new google.maps.InfoWindow;
+        // for (jmarker in jmarkers) {
+        Array.prototype.forEach.call(jmarkers, function(jmarker) {
+          console.log(jmarker.title);
+          // console.log("jmarker:" + jmarker.getAttribute('title'));
+            var id = jmarker.id
+            var name = jmarker.title
+            var desc = jmarker.desc
+            var point = new google.maps.LatLng(
+                parseFloat(jmarker.lat),
+                parseFloat(jmarker.lng));
+            // console.log(jmarkers[jmarker].title);
+            var infowincontent = document.createElement('div');
+            var strong = document.createElement('strong');
+            strong.textContent = name
+            infowincontent.appendChild(strong);
+            infowincontent.appendChild(document.createElement('br'));
+
+            var text = document.createElement('text');
+            text.textContent = desc
+            infowincontent.appendChild(text);
+            var icon = {};
+            var google_marker = new google.maps.Marker({
+                map: map,
+                position: point,
+                label: icon.label
+            });
+            console.log("infowin:" + infowincontent.innerHTML);
+            google_marker.addListener('click', function() {
+              infoWindow.setContent(infowincontent);
+              infoWindow.open(map, google_marker);
+            });
+        });
+      }
+
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMhzzxiqp3uz_4K0ahxV1FFJQho0FvOWI&callback=initMap"
+    async defer></script>
+
