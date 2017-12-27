@@ -14,6 +14,11 @@ defmodule HistoryMaps.Maps do
     #Repo.get(Map, id)
   end
 
+  def change_map(%Map{} = map) do
+    map
+    |> Map.map_changeset(%{})
+  end
+
   def new_map(user) do
     user
     |> Ecto.build_assoc(:maps)
@@ -26,6 +31,13 @@ defmodule HistoryMaps.Maps do
     |> Map.changeset(attrs)
     |> Repo.insert()
   end
+
+  def update_map(%Map{} = map, attrs) do
+    map
+    |> Map.map_changeset(attrs)
+    |> Repo.update
+  end
+
 
   def list_markers(map) do
     Repo.all(map_markers(map))
@@ -46,6 +58,17 @@ defmodule HistoryMaps.Maps do
 
   def get_marker(id, user) do
     Repo.get(user_markers(user), id)
+  end
+
+  def change_marker(%Marker{} = marker) do
+    marker
+    |> Marker.marker_changeset(%{})
+  end
+
+  def update_marker(%Marker{} = marker, attrs) do
+    marker
+    |> Marker.marker_changeset(attrs)
+    |> Repo.update
   end
 
   defp user_markers(user), do: Ecto.assoc(user, :markers)
@@ -83,5 +106,6 @@ defmodule HistoryMaps.Maps do
   defp user_locations(user) do
     Ecto.assoc(user, :locations)
   end
+  
 end
 

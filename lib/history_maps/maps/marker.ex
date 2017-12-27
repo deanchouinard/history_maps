@@ -19,5 +19,10 @@ defmodule HistoryMaps.Maps.Marker do
     |> cast(params, [:user_id, :map_id, :title, :description, :lat, :lng])
   end
 
+  def marker_changeset(marker, attrs) do
+    marker
+    |> cast(attrs, [:user_id, :map_id, :title, :description, :lat, :lng])
+    |> validate_required([:user_id, :map_id, :title, :description, :lat, :lng])
+  end
   
 end

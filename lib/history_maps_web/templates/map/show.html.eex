@@ -1,8 +1,36 @@
-<h1>Showing Map</h1>
-<%= render "map.html", map: @map %>
+<h1><%= @map.title %></h1>
+  <table class="table table-condensed">
+    <tbody>
+      <tr>
+        <td class="text-right">Id : </td>
+        <td> <%= @map.id %></td>
+      </tr>
+      <tr>
+        <td class="text-right">Title : </td>
+        <td> <b><%= @map.title  %></b> (<%= @map.id %>)</td>
+      </tr>
+      <tr>
+        <td class="text-right">Description : </td>
+        <td><%= @map.description %></td>
+      </tr>
+      <tr>
+        <td class="text-right">Lat : </td>
+        <td><%= @map.lat %></td>
+      </tr>
+      <tr>
+        <td class="text-right">Lng : </td>
+        <td><%= @map.lng %></td>
+      </tr>
+      <tr>
+        <td class="text-right">Zoom : </td>
+        <td><%= @map.zoom %></td>
+      </tr>
+    </tbody>
+  </table>
 <br/>Link to view map is a different browser window.
 <button type="button" id="view-button" class="btn btn-default">View map</button>
 <br/><%= link "View Map", to: display_path(@conn, :show, map: @map) %>
+<br/><%= button "Edit Map", to: map_path(@conn, :edit, @map), method: "get", class: "btn btn-default" %>
 
 <h2>Markers</h2>
   <table class="table table-condensed">
@@ -10,12 +38,19 @@
       <tr>
         <th>Title</th>
         <th>Description</th>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <%= for marker <- @markers do %>
           <td><%= link marker.title, to: map_marker_path(@conn, :show, @map.id, marker) %></td>
           <td><%= marker.description %></td>
+          <td><%= marker.lat %></td>
+          <td><%= marker.lng %></td>
+          <td><%= button "Edit", to: map_marker_path(@conn, :edit, @map,
+          marker), method: "get", class: "btn btn-default btn-sm" %>
         </tr>
       <% end %>
     </tbody>

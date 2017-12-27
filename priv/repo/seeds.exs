@@ -26,7 +26,7 @@ IO.inspect user
 Repo.delete_all Map
 map = %Map{}
       |> Map.changeset(%{ user_id: user.id, title: "Test Map", lat: 41.779430,
-        lng: -71.128605, zoom: 10 })
+        lng: -71.128605, zoom: 10, description: "This is a test map." })
       |> Repo.insert!()
 
 IO.inspect map

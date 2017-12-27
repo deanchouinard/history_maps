@@ -2,7 +2,7 @@ defmodule HistoryMapsWeb.MarkerController do
   use HistoryMapsWeb, :controller
   alias HistoryMaps.Maps
 
-  plug :authenticate_user when action in [:index, :show, :new, :create]
+  plug :authenticate_user when action in [:index, :show, :edit, :update, :new, :create]
 
   # def index(conn, _params) do
   #   users = Accounts.list_users()
@@ -29,6 +29,27 @@ defmodule HistoryMapsWeb.MarkerController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+  
+  def edit(conn, %{"id" => id}, user) do
+    marker = Maps.get_marker(id, user)
+    changeset = Maps.change_marker(marker)
+    render conn, "edit.html", changeset: changeset, marker: marker, map:
+    marker.map_id
+  end
+
+  def update(conn, %{"id" => id, "marker" => marker_params}, user) do
+    marker = Maps.get_marker(id, user)
+
+    case Maps.update_marker(marker, marker_params) do
+      {:ok, marker} ->
+        conn
+        |> put_flash(:info, "Marker updated successfully.")
+        |> redirect(to: map_path(conn, :show, marker.map_id))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", changeset: changeset, marker: marker)
+    end
+  end
+
 
   def action(conn, _) do apply(__MODULE__, action_name(conn),
     [conn, conn.params, conn.assigns.current_user])

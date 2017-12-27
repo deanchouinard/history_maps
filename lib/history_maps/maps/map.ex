@@ -19,6 +19,12 @@ defmodule HistoryMaps.Maps.Map do
     map
     |> cast(params, [:user_id, :title, :description, :lat, :lng, :zoom])
   end
+  
+  def map_changeset(map, attrs) do
+    map
+    |> cast(attrs, [:user_id, :title, :description, :lat, :lng, :zoom])
+    |> validate_required([:user_id, :title, :description, :lat, :lng, :zoom])
+  end
 
   
 end

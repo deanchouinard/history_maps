@@ -1,0 +1,29 @@
+
+<h1>Edit Marker</h1>
+
+<%= form_for @changeset, map_marker_path(@conn, :update, @map, @marker), fn f -> %>
+
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= text_input f, :title, placeholder: "Title", class: "form-control" %>
+  <%= error_tag f, :title %>
+</div>
+<div class="form-group">
+  <%= text_input f, :description, placeholder: "Description", class: "form-control" %>
+  <%= error_tag f, :description %>
+</div>
+<div class="form-group">
+  <%= text_input f, :lat, placeholder: "Lat", class: "form-control" %>
+  <%= error_tag f, :lat %>
+</div>
+<div class="form-group">
+  <%= text_input f, :lng, placeholder: "Lng", class: "form-control" %>
+  <%= error_tag f, :lng %>
+</div>
+<%= submit "Save Map", class: "btn btn-primary" %>
+<% end %>
