@@ -4,10 +4,15 @@
       <tr>
         <td class="text-right">Id : </td>
         <td> <%= @map.id %></td>
+        <td><%= button "Edit Map", to: map_path(@conn, :edit, @map), method:
+        "get", class: "btn btn-default btn-xs" %></td>
       </tr>
       <tr>
         <td class="text-right">Title : </td>
         <td> <b><%= @map.title  %></b> (<%= @map.id %>)</td>
+        <td> <%= button "View Map", to: display_path(@conn, :show, @map.id),
+        method: "get", class: "btn btn-default btn-xs" %>
+        </td>
       </tr>
       <tr>
         <td class="text-right">Description : </td>
@@ -29,8 +34,6 @@
   </table>
 <br/>Link to view map is a different browser window.
 <button type="button" id="view-button" class="btn btn-default">View map</button>
-<br/><%= link "View Map", to: display_path(@conn, :show, map: @map) %>
-<br/><%= button "Edit Map", to: map_path(@conn, :edit, @map), method: "get", class: "btn btn-default" %>
 
 <h2>Markers</h2>
   <table class="table table-condensed">

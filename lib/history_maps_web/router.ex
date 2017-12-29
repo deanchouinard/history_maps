@@ -25,7 +25,7 @@ defmodule HistoryMapsWeb.Router do
         :update, :new, :create]
     end
     resources "/locations", LocationController, only: [:index, :show, :new, :create]
-    get "/display", DisplayController, :show
+    get "/display/:id", DisplayController, :show
 
   end
 
