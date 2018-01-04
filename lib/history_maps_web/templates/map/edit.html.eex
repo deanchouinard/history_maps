@@ -28,5 +28,13 @@
   <%= text_input f, :zoom, placeholder: "Zoom", class: "form-control" %>
   <%= error_tag f, :zoom %>
 </div>
+<div class="form-group">
+  <%= text_input f, :api_key, placeholder: "API Key", class: "form-control" %>
+  <%= error_tag f, :api_key %>
+</div>
+<span>
 <%= submit "Save Map", class: "btn btn-primary" %>
+&nbsp
+<%= link "Cancel", to: map_path(@conn, :show, @map), class: "btn btn-default" %>
+</span>
 <% end %>

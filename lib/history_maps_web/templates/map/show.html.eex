@@ -30,6 +30,10 @@
         <td class="text-right">Zoom : </td>
         <td><%= @map.zoom %></td>
       </tr>
+      <tr>
+        <td class="text-right">API Key : </td>
+        <td><%= @map.api_key %></td>
+      </tr>
     </tbody>
   </table>
 <br/>Link to view map is a different browser window.

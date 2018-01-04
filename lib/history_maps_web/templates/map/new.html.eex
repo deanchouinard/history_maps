@@ -17,5 +17,21 @@
   <%= text_input f, :description, placeholder: "Description", class: "form-control" %>
   <%= error_tag f, :description %>
 </div>
+<div class="form-group">
+  <%= text_input f, :lat, placeholder: "Lat", class: "form-control" %>
+  <%= error_tag f, :lat %>
+</div>
+<div class="form-group">
+  <%= text_input f, :lng, placeholder: "Lng", class: "form-control" %>
+  <%= error_tag f, :lng %>
+</div>
+<div class="form-group">
+  <%= text_input f, :zoom, placeholder: "Zoom", class: "form-control" %>
+  <%= error_tag f, :zoom %>
+</div>
+<div class="form-group">
+  <%= text_input f, :api_key, placeholder: "API Key", class: "form-control" %>
+  <%= error_tag f, :api_key %>
+</div>
 <%= submit "Create Map", class: "btn btn-primary" %>
 <% end %>

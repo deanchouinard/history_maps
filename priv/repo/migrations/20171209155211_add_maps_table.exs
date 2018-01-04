@@ -9,6 +9,7 @@ defmodule HistoryMaps.Repo.Migrations.AddMapsTable do
       add :lat, :float, null: false
       add :lng, :float, null: false
       add :zoom, :integer, null: false
+      add :api_key, :string
 
       timestamps()
     end
