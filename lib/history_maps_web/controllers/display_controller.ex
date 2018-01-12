@@ -4,7 +4,7 @@ defmodule HistoryMapsWeb.DisplayController do
 
   plug :authenticate_user when action in [:index, :show, :new, :create]
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id, "pub" => pub}) do
     map = Maps.get_map(id, conn.assigns.current_user)
     markers = Maps.list_markers(map)
               |> Enum.map(fn(x) -> %{"id" => x.id, "title" => x.title, "desc" =>
@@ -14,6 +14,10 @@ defmodule HistoryMapsWeb.DisplayController do
      # 41.779430, "lng" => -71.128605}
     # markers = '{ "name":"John", "age":31, "city":"New York" }'
     IO.inspect markers, label: "markers"
-    render conn, "show.html", map: map, markers: markers
+    if (pub == "true") do
+      render conn, "show.html", layout: {HistoryMapsWeb.LayoutView, "pub.html"}, map: map, markers: markers
+    else
+      render conn, "show.html", map: map, markers: markers
+    end
   end
 end

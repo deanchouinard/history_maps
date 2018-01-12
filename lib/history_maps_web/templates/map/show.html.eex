@@ -10,8 +10,8 @@
       <tr>
         <td class="text-right">Title : </td>
         <td> <b><%= @map.title  %></b> (<%= @map.id %>)</td>
-        <td> <%= button "View Map", to: display_path(@conn, :show, @map.id),
-        method: "get", class: "btn btn-default btn-xs" %>
+        <td> <%= link "View Map", to: display_path(@conn, :show, @map.id, pub:
+        "false"), class: "btn btn-default btn-xs" %>
         </td>
       </tr>
       <tr>
@@ -36,9 +36,12 @@
       </tr>
     </tbody>
   </table>
-<br/>Link to view map is a different browser window.
-<button type="button" id="view-button" class="btn btn-default">View map</button>
+  <br/>Link to view map is a different browser window. Eventually will publish
+  the map to a site.
+<button type="button" id="view-button" class="btn btn-default">Publish</button>
 
+        <p> <%= link "Publish Map", to: display_path(@conn, :show, @map.id,
+        pub: true), class: "btn btn-default btn-xs" %> </p>
 <h2>Markers</h2>
   <table class="table table-condensed">
     <thead>

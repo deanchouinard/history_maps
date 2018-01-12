@@ -26,6 +26,7 @@ defmodule HistoryMapsWeb.Router do
     end
     resources "/locations", LocationController, only: [:index, :show, :new, :create]
     get "/display/:id", DisplayController, :show
+    get "/publish/:id", PublishController, :show
 
   end
 

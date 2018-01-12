@@ -3,6 +3,8 @@
   <div id="map"></div>
   <div id="map-desc"><%= @map.description %></div>
 
+  <%= link "Back", to: map_path(@conn, :show, @map), class: "btn btn-default" %>
+
   <script>
     var customLabel = {
       restaurant: {
