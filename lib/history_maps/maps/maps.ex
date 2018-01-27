@@ -5,6 +5,18 @@ defmodule HistoryMaps.Maps do
   alias HistoryMaps.Accounts.User
   alias HistoryMaps.Repo
 
+  def publish_page(page, map_title, user_name) do
+    root_dir = System.cwd() <> "/priv/static/maps/"
+    work_dir = root_dir <> String.replace(user_name, " ", "") <> "/"
+    map_file_name = make_map_file_name(map_title)
+    if not File.exists?(work_dir) do
+      File.mkdir_p!(work_dir)
+    end
+    File.write!(work_dir <> map_file_name, page)
+  end
+
+  def make_map_file_name(map_title), do: String.replace(map_title, " ", "") <> ".html"
+
   def list_maps(user) do
     Repo.all(user_maps(user))
   end

@@ -42,6 +42,9 @@
 
         <p> <%= link "Publish Map", to: display_path(@conn, :show, @map.id,
         pub: true), class: "btn btn-default btn-xs" %> </p>
+        <p> <%= link "View Published Map", to: static_map_path(@map.title,
+        @conn.assigns.current_user.name), class: "btn btn-default btn-xs",
+        target: "_blank" %> </p>
 <h2>Markers</h2>
   <table class="table table-condensed">
     <thead>
